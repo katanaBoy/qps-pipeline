@@ -655,14 +655,14 @@ public class QARunner extends AbstractRunner {
                 logger.info("Suite Type: iOS")
                 Configuration.set("node", "ios")
                 break;
+			case "web":
+				logger.info("Suite Type: Web")
+				Configuration.set("node", "web")
+				break;
             default:
-                if ("NULL".equals(Configuration.get("browser"))) {
-                    logger.info("Suite Type: Default")
-                    Configuration.set("node", "master")
-                } else {
-                    logger.info("Suite Type: Web")
-                    Configuration.set("node", "web")
-                }
+				logger.info("Suite Type: Default")
+				Configuration.set("node", "master")
+				break;
         }
 
         def nodeLabel = Configuration.get("node_label")
