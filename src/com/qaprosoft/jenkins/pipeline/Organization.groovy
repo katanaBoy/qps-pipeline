@@ -43,6 +43,17 @@ class Organization {
     def register() {
         logger.info("Organization->register")
         context.node('master') {
+parameters {
+            choice(
+                name: 'Versions',
+                choices:"3.4\n4.4",
+                description: "Build for which version?" )
+            string(
+                name: 'Path',
+                defaultValue:"/home/pencillr/builds/",
+                description: "Where to put the build!")
+    }
+
             context.timestamps {
                 def folder = Configuration.get("folderName")
                 prepare()
